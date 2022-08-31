@@ -19,6 +19,7 @@ import {
 const CONFIG_FILENAME = "postcss-sprites.config.js";
 const ERROR_CONFIG_FILE_LOADING = "Error loading the config file";
 const FILE_PATH = path.resolve(process.cwd(), CONFIG_FILENAME);
+
 const loadConfigFile = () => {
     let options = {};
     try {
@@ -27,6 +28,7 @@ const loadConfigFile = () => {
                 delete require.cache[require.resolve(FILE_PATH)];
             }
         });
+
         options = require(FILE_PATH);
     } catch (e) {
         throw new Error(ERROR_CONFIG_FILE_LOADING + e.message);
@@ -42,7 +44,7 @@ export default postcss.plugin("postcss-sprites", (options = {}) => {
         // Extend defaults
 
         const opts = _.merge({}, defaults, options, loadConfigFile());
-        console.log(opts);
+        // console.log(opts);
         // Setup the logger
         opts.logger = createLogger(opts.verbose);
 
