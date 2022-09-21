@@ -1,196 +1,29 @@
-# Change Log
+# Changelog
 
-## [4.2.1] - 2017-02-07
-### Fixed
-- Preserve source of original declarations - See #90
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [4.2.0] - 2017-02-07
-### Added
-- [`verbose`](https://github.com/2createStudio/postcss-sprites#verbose) option
-
-### Fixed
-- Typos in examples
-- Rejected promises without error
-- Incorrect extraction of the urls
-
-## [4.1.1] - 2016-12-7
-### Changed
-- Apply `background-size` to all generated sprites
-- Use a hash instead of real path for `id` attribute in SVG sprites
-
-## [4.1.0] - 2016-11-22
-### Added
-- Better support for modular stylesheets
-- `originalUrl` property to `Image` object
-- Support for Promises in `onSaveSpritesheet` hook
-
-## [4.0.0] - 2016-08-26
-### Added
-- Support for SVG files
-
-### Fixed
-- Support for CommonJS
-- Broken options when the plugin is used in process with a `watch` flag(e.g postcss-cli)
-
-### Changed
-- Params passed to `onSaveSpritesheet` hook
-
-## [3.3.0] - 2016-07-26
-### Added
-- The filepath of stylesheet to `Image` object
-
-## [3.2.3] - 2016-07-22
-### Fixed
-- Usage of `Result.warn`
-
-## [3.2.2] - 2016-07-22
-### Fixed
-- Warnings in built-in filter
-
-## [3.2.1] - 2016-07-21
-### Changed
-- Use `console.log` instead of `Result.warn` to print the success message
-
-### Fixed
-- Broken tests under Node 6
-
-## [3.2.0] - 2016-07-18
-### Changed
-- Use ``Result.warn`` API instead of ``console.warn``
-- Publish the original source to npm
-
-## [3.1.2] - 2016-04-11
-### Fixed
-- Typescript support
-
-## [3.1.1] - 2016-03-23
-### Fixed
-- NaN paddings in retina sprites
-
-## [3.1.0] - 2016-02-04
-### Added
-- Tests for examples
-- Info logs
-
-### Changed
-- 'Usage' example
-
-### Fixed
-- Typos in examples
-
-## [3.0.3] - 2016-01-20
-### Fixed
-- Fix "Fix: Broken CommonJS export"
-
-### Changed
-- Add note in README how to require properly the module
-
-## [3.0.2] - 2016-01-20
-### Fixed
-- Broken CommonJS export
-
-## [3.0.1] - 2016-01-19
-### Fixed
-- Typos in README
-- Typos in plugin output
-
-### Removed
-- Unused code for responsive sprites
-
-## [3.0.0] - 2016-01-18
-### Added
-- ``basePath`` option
-- ``relativeTo`` option
-- ``hooks`` option
-
-### Changed
-- Move spritesmith options in their own object called ``spritesmith``
-
-### Removed
-- ``skipPrefix`` option - see [Skip Prefix](examples/skip-prefix.md)
-- ``outputDimensions`` option - see [Output Dimensions](examples/output-dimensions.md)
-- ``verbose`` option
-
-## [2.0.3] - 2016-01-06
-### Changed
-- Revert ``styleFilePath`` behaviour
-
-### Fixed
-- Scan regex
-
-## [2.0.2] - 2015-10-30
-### Changed
-- Make ``styleFilePath`` relative to specific file
-
-## [2.0.1] - 2015-09-23
-### Changed
-- Use ``Node.remove`` instead of ``Node.removeSelf``
-
-## [2.0.0] - 2015-08-28
-### Added
-- Support for PostCSS@5
-
-## [1.0.9] - 2015-07-20
-### Added
-- `outputDimensions` option
-- `skipPrefix` option
-
-## [1.0.8] - 2015-07-08
-### Fixed
-- Bug with paths in CSS output
-
-## [1.0.7] - 2015-06-29
-### Fixed
-- Bug with multiple background-size properties
-
-## [1.0.6] - 2015-06-09
-### Added
-- `stylesheetPath` option
-
-### Changed
-- ``spritePath`` option
-
-### Removed
-- ``externalStylesheet`` option
-- ``baseUrl`` option
-- ``spriteName`` option
-
-## [1.0.5] - 2015-06-08
-### Added
-- Support for JPEG/JPG sprites
-
-### Fixed
-- Typos in README
-
-## [1.0.4] - 2015-06-05
-### Fixed
-- Bug with background declarations inside ``AtRule`` nodes
-
-## [1.0.3] - 2015-06-01
-### Added
-- Support for rgb & rgba colors
-
-### Changed
-- Date format in CHANGELOG
-
-## [1.0.2] - 2015-06-01
-### Added
-- Tests
-- Travis CI integration
-- `baseUrl` option
-
-### Fixed
-- Bug with unused tokens
-- Bug with groupBy & filterBy functions with gulp
-- CSS properties order in output stylesheet
-
-## [1.0.1] - 2015-05-28
-### Fixed
-- ``verbose`` option
-- Confusing parts in README
-- Bug with spriteRef
+### 1.0.1 (2022-09-21)
 
 
-## [1.0.0] - 2015-05-27
-### Added
-- Initial version
+### Bug Fixes
+
+* advanced example link ([9276c6f](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/9276c6f063d4f4dbedc250957fa42d0c565aaea5))
+* background props cleanup ([438c51a](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/438c51a6be9efab09b8d04b8a3debd7d93f21552))
+* baseUrl in examples ([7d9fe38](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/7d9fe38960be7900456c428ffc763aca56dcc072))
+* broken sprite path ([14a0e08](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/14a0e08f9e4d45b601ed1f75d3dee0ee20829271))
+* bug with multiple groups when plugin is used with gulp watch ([06af1b3](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/06af1b371acb3c94a9efeca194bb42435de10b5a))
+* checkboxes in readme ([2687978](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/2687978e307832f5b813743f1330a292f33792f6))
+* failed scan background style not ends ';' ([66c372e](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/66c372ed7a0356741787cccfbcb37de344009aad))
+* package.json keywords to cover PostCSS Plugins Guidelines ([c5427c6](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/c5427c65b42e6d0387d2213dd56c10b0c2f40b21))
+* path to the templates ([748aaf7](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/748aaf7dd37889a9f8bfe3dd8dbd735cf7ffedcb))
+* postcss version for tests ([68e6886](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/68e6886c456bd13d8a9c74973cbd1f6f8d591abc))
+* spriteRef when image is undefined ([7823a0c](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/7823a0c096c90fec0b1d0786f42c1553cfbf5aff))
+* typo ([0a36739](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/0a367394ca772c69a74b4c1454d8b3fd288aea9b))
+* typo ([5a876c7](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/5a876c7d86a8ae8f3def0b450fb3985d167fa55a))
+* typo in advanced example ([4290999](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/42909999ec8a2998c6984e39ed194d2e63299b52))
+* typos ([922721a](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/922721a2caf0f298f19ad3b749399b3daa9efb24))
+* verbose option ([dc004de](http://172.16.7.10/group_web/npm-package/postcss-sprites/commit/dc004de0accc4e1d7b60f9dd881aaf9d917f2c45))
+
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.

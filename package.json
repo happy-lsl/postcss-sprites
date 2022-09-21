@@ -1,7 +1,7 @@
 {
     "name": "@postcss/sprites",
-    "version": "1.0.0",
-    "description": "Generate spritesheets from stylesheets",
+    "version": "1.0.1",
+    "description": "自动生成精灵图且可输出对应以【%】为单位的 background-size and background-position",
     "main": "lib/index.js",
     "keywords": [
         "postcss-plugin",
@@ -18,13 +18,23 @@
         "build": "./node_modules/.bin/babel src/ --out-dir lib/",
         "watch": "./node_modules/.bin/babel --watch src/ --out-dir lib/",
         "prepublish": "npm test",
-        "pretest": "npm run build"
+        "pretest": "npm run build",
+        "publish-version": "npm run push && npm publish --registry https://npm.efun.com && npm publish --registry https://npm.efuncn.com",
+        "unpublish-version": "npm unpublish postcss-sprites@1.0.0 --force --registry https://npm.efun.com && npm unpublish postcss-sprites@1.0.0 --force --registry https://npm.efuncn.com && npm run delete-tag",
+        "delete-tag": "git tag -d v1.0.0 && git push origin :refs/tags/v1.0.0",
+        "commit": "git add . && git-cz",
+        "push": "git push --follow-tags",
+        "release": "standard-version",
+        "release:100": "npm run release -- major && npm run publish-version",
+        "release:010": "npm run release -- minor && npm run publish-version",
+        "release:001": "npm run release -- patch && npm run publish-version"
     },
-    "repository": "2createStudio/postcss-sprites",
+    "repository": {
+        "type": "git",
+        "url": "http://172.16.7.10/group_web/npm-package/postcss-sprites.git"
+    },
     "author": "IT-Elin",
-    "license": "MIT",
-    "bugs": "https://github.com/2createStudio/postcss-sprites/issues",
-    "homepage": "https://github.com/2createStudio/postcss-sprites#readme",
+    "license": "ISC",
     "devDependencies": {
         "ava": "^0.15.2",
         "babel-cli": "^6.4.0",
