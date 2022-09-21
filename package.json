@@ -1,6 +1,6 @@
 {
     "name": "@postcss/postcss-sprites",
-    "version": "1.0.2",
+    "version": "0.0.1",
     "description": "自动生成精灵图且可输出对应以【%】为单位的 background-size and background-position",
     "main": "lib/index.js",
     "keywords": [
@@ -14,10 +14,8 @@
         "svg"
     ],
     "scripts": {
-        "test": "./node_modules/.bin/ava test/*.js --verbose --serial",
         "build": "./node_modules/.bin/babel src/ --out-dir lib/",
         "watch": "./node_modules/.bin/babel --watch src/ --out-dir lib/",
-        "prepublish": "npm test",
         "pretest": "npm run build",
         "publish-version": "npm run push && npm publish --registry https://npm.efun.com && npm publish --registry https://npm.efuncn.com",
         "unpublish-version": "npm unpublish postcss-sprites@1.0.0 --force --registry https://npm.efun.com && npm unpublish postcss-sprites@1.0.0 --force --registry https://npm.efuncn.com && npm run delete-tag",
