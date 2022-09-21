@@ -1,6 +1,6 @@
 {
-    "name": "@postcss/sprites",
-    "version": "1.0.1",
+    "name": "@postcss/postcss-sprites",
+    "version": "1.0.2",
     "description": "自动生成精灵图且可输出对应以【%】为单位的 background-size and background-position",
     "main": "lib/index.js",
     "keywords": [
