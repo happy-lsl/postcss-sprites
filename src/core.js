@@ -33,12 +33,67 @@ export const defaults = {
     stylesheetPath: null,
     spritePath: "./",
     relativeTo: "file",
-    filterBy: [],
-    groupBy: [],
+    filterBy: function(image) {
+        // 默认值：[], 定义过滤器函数，用于处理样式表中创建的图像列表，每个函数都必须返回一个Promise应该被解析或拒绝的函数。
+        if (!/sprites/.test(image.url)) {
+            return Promise.reject();
+        }
+        return Promise.resolve();
+    },
+    groupBy: function(image) {
+        // 默认值：[], 定义将操作样式表中创建的图像列表的组函数，每个函数都必须返回一个Promise应该用字符串解析或拒绝的函数
+        // 图片相对路径
+        var url = image.url;
+        // 去掉图片名的相对路径
+        var url_yx = url.substr(0, url.lastIndexOf("/"));
+        // 获取图片所在的文件夹名称
+        var folder_name = url_yx.substr(url_yx.lastIndexOf("/") + 1);
+        return Promise.resolve(folder_name);
+    },
     retina: false,
     hooks: {
-        onSaveSpritesheet: null,
-        onUpdateRule: null,
+        onSaveSpritesheet: null, // 允许重写生成的spritesheet数据的钩子。如果返回值为string，则将其用作文件路径值，如果返回值为object，则将其用作将与当前spritesheet数据合并的值。返回值也可以是Promise，它应返回字符串或对象。
+        onUpdateRule: function(rule, token, image) {
+            var backgroundSizeX = (image.spriteWidth / image.coords.width) * 100;
+            var backgroundSizeY = (image.spriteHeight / image.coords.height) * 100;
+            var backgroundPositionX =
+                (image.coords.x / (image.spriteWidth - image.coords.width)) * 100;
+            var backgroundPositionY =
+                (image.coords.y / (image.spriteHeight - image.coords.height)) * 100;
+
+            backgroundSizeX = isNaN(backgroundSizeX) ? 0 : backgroundSizeX;
+            backgroundSizeY = isNaN(backgroundSizeY) ? 0 : backgroundSizeY;
+            backgroundPositionX = isNaN(backgroundPositionX) ?
+                0 :
+                backgroundPositionX;
+            backgroundPositionY = isNaN(backgroundPositionY) ?
+                0 :
+                backgroundPositionY;
+
+            var backgroundImage = postcss.decl({
+                prop: "background-image",
+                value: "url(" + image.spriteUrl + ")",
+            });
+
+            var backgroundSize = postcss.decl({
+                prop: "background-size",
+                value: backgroundSizeX + "% " + backgroundSizeY + "%",
+            });
+
+            var backgroundPosition = postcss.decl({
+                prop: "background-position",
+                value: backgroundPositionX + "% " + backgroundPositionY + "%",
+            });
+
+            rule.insertAfter(token, backgroundImage);
+            if (image.spriteUrl.includes("only-")) {
+                //文件夹名的顶部加上标记
+                //只需要序列帧background-image，不需要输出backgroundPosition和backgroundSize
+                return;
+            }
+            rule.insertAfter(backgroundImage, backgroundPosition);
+            rule.insertAfter(backgroundPosition, backgroundSize);
+        },
     },
     spritesmith: {
         engine: "pixelsmith",

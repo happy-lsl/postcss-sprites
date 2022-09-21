@@ -16,25 +16,6 @@ import {
     updateReferences,
     createLogger,
 } from "./core";
-const CONFIG_FILENAME = "postcss-sprites.config.js";
-const ERROR_CONFIG_FILE_LOADING = "Error loading the config file";
-const FILE_PATH = path.resolve(process.cwd(), CONFIG_FILENAME);
-
-const loadConfigFile = () => {
-    let options = {};
-    try {
-        fs.watch(FILE_PATH, (event, filename) => {
-            if (filename && event === "change") {
-                delete require.cache[require.resolve(FILE_PATH)];
-            }
-        });
-
-        options = require(FILE_PATH);
-    } catch (e) {
-        throw new Error(ERROR_CONFIG_FILE_LOADING + e.message);
-    }
-    return options;
-};
 
 /**
  * Plugin registration.
@@ -43,7 +24,7 @@ export default postcss.plugin("postcss-sprites", (options = {}) => {
     return (css, result) => {
         // Extend defaults
 
-        const opts = _.merge({}, defaults, options, loadConfigFile());
+        const opts = _.merge({}, defaults, options);
         // console.log(opts);
         // Setup the logger
         opts.logger = createLogger(opts.verbose);
