@@ -1,6 +1,6 @@
 {
     "name": "@postcss/postcss-sprites",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "自动生成精灵图且可输出对应以【%】为单位的 background-size and background-position",
     "main": "lib/index.js",
     "keywords": [
@@ -23,6 +23,7 @@
         "commit": "git add . && git-cz",
         "push": "git push --follow-tags",
         "release": "standard-version",
+        "release-major": "standard-version --release-as major",
         "release:100": "npm run release -- major && npm run publish-version",
         "release:010": "npm run release -- minor && npm run publish-version",
         "release:001": "npm run release -- patch && npm run publish-version"
